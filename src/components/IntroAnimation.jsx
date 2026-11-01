@@ -1,23 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-export default function IntroAnimation({ onComplete }) {
+export default function IntroAnimation({ onExit, onComplete }) {
   const [phase, setPhase] = useState('reveal'); // 'reveal' -> 'glow' -> 'exit' -> 'done'
+  
+  // Guard against React StrictMode duplicate execution and re-renders
+  const hasStartedRef = useRef(false);
+  const onExitRef = useRef(onExit);
+  const onCompleteRef = useRef(onComplete);
 
   useEffect(() => {
+    onExitRef.current = onExit;
+    onCompleteRef.current = onComplete;
+  }, [onExit, onComplete]);
+
+  useEffect(() => {
+    if (hasStartedRef.current) return;
+    hasStartedRef.current = true;
+
     // Stage 1: Logo reveals and violet glow surges
     const timer1 = setTimeout(() => {
       setPhase('glow');
     }, 700);
 
-    // Stage 2: Exit fade & scale
+    // Stage 2: Exit fade & scale begins
     const timer2 = setTimeout(() => {
       setPhase('exit');
+      if (onExitRef.current) onExitRef.current();
     }, 2100);
 
-    // Stage 3: Finished
+    // Stage 3: Finished completely
     const timer3 = setTimeout(() => {
       setPhase('done');
-      if (onComplete) onComplete();
+      if (onCompleteRef.current) onCompleteRef.current();
     }, 2800);
 
     return () => {
@@ -25,17 +39,23 @@ export default function IntroAnimation({ onComplete }) {
       clearTimeout(timer2);
       clearTimeout(timer3);
     };
-  }, [onComplete]);
+  }, []);
+
+  const handleSkip = () => {
+    setPhase('exit');
+    if (onExitRef.current) onExitRef.current();
+    setTimeout(() => {
+      setPhase('done');
+      if (onCompleteRef.current) onCompleteRef.current();
+    }, 350);
+  };
 
   if (phase === 'done') return null;
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-700 ease-out ${
-        phase === 'exit'
-          ? 'opacity-0 pointer-events-none scale-105 filter blur-sm'
-          : 'opacity-100 pointer-events-auto'
-      }`}
+      id="bob-intro-overlay"
+      aria-hidden={phase === 'exit'}
       style={{
         backgroundColor: '#050B20',
         position: 'fixed',
@@ -43,26 +63,31 @@ export default function IntroAnimation({ onComplete }) {
         left: 0,
         right: 0,
         bottom: 0,
-        zIndex: 9999,
+        zIndex: 99999,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        transition: 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease',
+        opacity: phase === 'exit' ? 0 : 1,
+        transform: phase === 'exit' ? 'scale(1.05)' : 'scale(1)',
+        filter: phase === 'exit' ? 'blur(8px)' : 'none',
+        pointerEvents: phase === 'exit' ? 'none' : 'auto'
       }}
     >
       {/* Ambient background glow orbs */}
       <div
         style={{
           position: 'absolute',
-          width: '500px',
-          height: '500px',
+          width: '550px',
+          height: '550px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(89, 56, 232, 0.4) 0%, rgba(89, 56, 232, 0.05) 50%, transparent 70%)',
-          filter: 'blur(60px)',
-          transform: phase === 'glow' ? 'scale(1.25)' : 'scale(0.8)',
+          background: 'radial-gradient(circle, rgba(89, 56, 232, 0.45) 0%, rgba(89, 56, 232, 0.08) 50%, transparent 70%)',
+          filter: 'blur(70px)',
+          transform: phase === 'glow' || phase === 'exit' ? 'scale(1.3)' : 'scale(0.85)',
           transition: 'transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s ease',
-          opacity: phase === 'reveal' ? 0.4 : 0.85,
+          opacity: phase === 'reveal' ? 0.35 : 0.9,
           pointerEvents: 'none'
         }}
       />
@@ -89,14 +114,14 @@ export default function IntroAnimation({ onComplete }) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          transform: phase === 'reveal' ? 'translateY(16px) scale(0.95)' : 'translateY(0) scale(1)',
-          opacity: phase === 'reveal' ? 0.7 : 1,
-          transition: 'transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease',
+          transform: phase === 'reveal' ? 'translateY(14px) scale(0.96)' : 'translateY(0) scale(1)',
+          opacity: phase === 'reveal' ? 0.75 : 1,
+          transition: 'transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease',
           textAlign: 'center',
           padding: '2rem'
         }}
       >
-        {/* Actual brand logo visual or text graphic */}
+        {/* Actual brand logo visual */}
         <div style={{ position: 'relative', marginBottom: '1.25rem' }}>
           <img
             src="/assets/bob-logo.png"
@@ -106,7 +131,7 @@ export default function IntroAnimation({ onComplete }) {
               maxWidth: '380px',
               width: '90vw',
               objectFit: 'contain',
-              filter: phase === 'glow' ? 'drop-shadow(0 0 25px rgba(89, 56, 232, 0.6))' : 'none',
+              filter: phase === 'glow' ? 'drop-shadow(0 0 28px rgba(89, 56, 232, 0.65))' : 'drop-shadow(0 0 10px rgba(89, 56, 232, 0.2))',
               transition: 'filter 1s ease'
             }}
           />
@@ -131,7 +156,7 @@ export default function IntroAnimation({ onComplete }) {
               top: 0,
               height: '100%',
               backgroundColor: '#5938E8',
-              boxShadow: '0 0 10px #5938E8',
+              boxShadow: '0 0 12px #5938E8',
               width: phase === 'glow' || phase === 'exit' ? '100%' : '15%',
               transition: 'width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1)'
             }}
@@ -140,18 +165,13 @@ export default function IntroAnimation({ onComplete }) {
 
         {/* Skip button for accessibility */}
         <button
-          onClick={() => {
-            setPhase('exit');
-            setTimeout(() => {
-              setPhase('done');
-              if (onComplete) onComplete();
-            }, 400);
-          }}
+          onClick={handleSkip}
+          aria-label="Skip intro animation"
           style={{
             marginTop: '2rem',
             background: 'transparent',
             border: 'none',
-            color: 'rgba(255, 255, 255, 0.4)',
+            color: 'rgba(255, 255, 255, 0.45)',
             fontSize: '0.78rem',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -162,10 +182,10 @@ export default function IntroAnimation({ onComplete }) {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.color = '#FFFFFF';
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'rgba(255, 255, 255, 0.4)';
+            e.currentTarget.style.color = 'rgba(255, 255, 255, 0.45)';
             e.currentTarget.style.background = 'transparent';
           }}
         >
