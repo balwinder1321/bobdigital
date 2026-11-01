@@ -237,7 +237,7 @@ export default function Hero() {
                 }}
               >
                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#5938E8' }} />
-                bobdigital.in
+                https://bobdigital.vercel.app/
               </div>
               <div style={{ width: '40px' }} />
             </div>
