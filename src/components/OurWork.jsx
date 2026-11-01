@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { ExternalLink, Eye, ArrowUpRight, CheckCircle, X, Sparkles, Smartphone, Monitor } from 'lucide-react';
+import { ExternalLink, Eye, ArrowUpRight, CheckCircle, X, Sparkles, Globe } from 'lucide-react';
 
 export default function OurWork() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
-  const [viewMode, setViewMode] = useState('desktop'); // 'desktop' or 'mobile'
 
   const categories = [
     { id: 'all', label: 'All Projects' },
+    { id: 'client', label: 'Client Work' },
     { id: 'restaurant', label: 'Restaurant' },
     { id: 'retail', label: 'Retail & E-Com' },
     { id: 'portfolio', label: 'Portfolio' },
@@ -16,12 +16,32 @@ export default function OurWork() {
 
   const projects = [
     {
+      id: 'together-we-rise',
+      title: 'Together We Rise Network',
+      category: 'client',
+      subtitle: 'Digital Presence & Community Platform',
+      image: '/assets/together-we-rise.jpg',
+      badge: 'First Client Project',
+      isClientProject: true,
+      liveUrl: 'https://togetherwerise-network.vercel.app/',
+      tags: ['First Client Project', 'Live Website', 'Custom Design', 'Mobile-First'],
+      summary: 'Our first client project, designed and developed by BOB Digital to establish a professional digital presence for the Together We Rise Network.',
+      features: [
+        'Established the premier digital presence for Together We Rise Network',
+        'Custom brand styling and elegant typography tailored for community empowerment',
+        'Engineered for blazing fast load speeds across mobile viewports',
+        'Live and deployed in production'
+      ],
+      whatsappMsg: 'Hi BOB DIGITAL, I visited the Together We Rise Network website you developed. I would like to consult about building a website for our brand.'
+    },
+    {
       id: 'saffron-sage',
       title: 'Saffron & Sage',
       category: 'restaurant',
       subtitle: 'Luxury Fine Dining & Hospitality',
       image: '/assets/work-restaurant.jpg',
       badge: 'Hospitality Concept',
+      isClientProject: false,
       tags: ['Next.js', 'Online Reservations', 'Michelin Aesthetic', 'Speed 99'],
       summary: 'An immersive digital culinary experience designed with dark ambient tones, rich gold accents, interactive table reservation booking, and gourmet menu exploration.',
       features: [
@@ -39,6 +59,7 @@ export default function OurWork() {
       subtitle: 'Minimalist Luxury E-Commerce',
       image: '/assets/work-retail.jpg',
       badge: 'E-Commerce Concept',
+      isClientProject: false,
       tags: ['Online Store', 'Product Catalog', 'Razorpay & UPI', 'Cart Drawer'],
       summary: 'High-end retail storefront engineered for seamless customer shopping, high-converting product grids, smooth checkout UX, and instant payment integration.',
       features: [
@@ -56,6 +77,7 @@ export default function OurWork() {
       subtitle: 'Editorial Architectural & Design Studio',
       image: '/assets/work-portfolio.jpg',
       badge: 'Portfolio Concept',
+      isClientProject: false,
       tags: ['Brutalist Layout', 'High-Res Showcase', 'Micro-Interactions', 'Fast Load'],
       summary: 'Monochrome architectural portfolio emphasizing spatial mastery, minimalist typography, case study depth, and subtle violet design accents.',
       features: [
@@ -73,6 +95,7 @@ export default function OurWork() {
       subtitle: 'Strategic Corporate & Financial Advisory',
       image: '/assets/work-business.jpg',
       badge: 'Corporate Concept',
+      isClientProject: false,
       tags: ['Enterprise Web', 'Dashboard Preview', 'Trust Metrics', 'B2B Lead Gen'],
       summary: 'Authoritative fintech and enterprise advisory platform featuring interactive portfolio graphs, trust telemetry, skyscraper imagery, and executive consultation booking.',
       features: [
@@ -130,7 +153,7 @@ export default function OurWork() {
         {/* Section Header */}
         <div className="section-header dark">
           <div className="badge-pill dark" style={{ marginBottom: '1rem' }}>
-            Featured Portfolio
+            Featured Portfolio & Client Work
           </div>
           <h2
             style={{
@@ -151,7 +174,7 @@ export default function OurWork() {
             </span>
           </h2>
           <p className="section-subtitle">
-            Explore our curated demonstration website mockups across retail, dining, architecture, and corporate verticals. Every design is built to demonstrate what is possible for your business.
+            Explore our completed client solutions and curated demonstration projects. Every build is engineered with uncompromising quality, aesthetic restraint, and business focus.
           </p>
         </div>
 
@@ -188,7 +211,7 @@ export default function OurWork() {
           ))}
         </div>
 
-        {/* 2x2 Showcase Grid */}
+        {/* Projects Grid */}
         <div
           style={{
             display: 'grid',
@@ -196,179 +219,277 @@ export default function OurWork() {
             gap: '2.5rem'
           }}
         >
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="glass-card-dark"
-              style={{
-                borderRadius: '24px',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'linear-gradient(180deg, #0A1330 0%, #050B20 100%)'
-              }}
-            >
-              {/* Image Preview with Badge & Hover Overlay */}
+          {filteredProjects.map((project) => {
+            const isClient = project.isClientProject;
+
+            return (
               <div
+                key={project.id}
+                className="glass-card-dark"
                 style={{
-                  position: 'relative',
+                  borderRadius: '24px',
                   overflow: 'hidden',
-                  aspectRatio: '16/9',
-                  backgroundColor: '#020617',
-                  cursor: 'pointer'
+                  display: 'flex',
+                  flexDirection: 'column',
+                  border: isClient
+                    ? '2px solid rgba(89, 56, 232, 0.65)'
+                    : '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: isClient
+                    ? '0 20px 50px rgba(89, 56, 232, 0.25), 0 0 30px rgba(89, 56, 232, 0.15)'
+                    : 'none',
+                  background: isClient
+                    ? 'linear-gradient(180deg, #0D173C 0%, #050B20 100%)'
+                    : 'linear-gradient(180deg, #0A1330 0%, #050B20 100%)',
+                  position: 'relative'
                 }}
-                onClick={() => setSelectedProject(project)}
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transition: 'transform 0.5s ease'
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                />
-
-                {/* Demonstration Notice Pill */}
+                {/* Image Preview with Badge & Hover Overlay */}
                 <div
                   style={{
-                    position: 'absolute',
-                    top: '12px',
-                    left: '12px',
-                    backgroundColor: 'rgba(5, 11, 32, 0.85)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(89, 56, 232, 0.4)',
-                    color: '#D4C9FF',
-                    padding: '4px 10px',
-                    borderRadius: '8px',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase'
+                    position: 'relative',
+                    overflow: 'hidden',
+                    aspectRatio: '16/9',
+                    backgroundColor: '#020617',
+                    cursor: 'pointer'
                   }}
+                  onClick={() => setSelectedProject(project)}
                 >
-                  Demo Project
-                </div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.5s ease'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
 
-                {/* Quick View Button Overlay */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '12px',
-                    right: '12px',
-                    backgroundColor: 'rgba(89, 56, 232, 0.9)',
-                    color: '#FFFFFF',
-                    padding: '6px 14px',
-                    borderRadius: '20px',
-                    fontSize: '0.78rem',
-                    fontWeight: 600,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)'
-                  }}
-                >
-                  <Eye size={14} />
-                  <span>Inspect Details</span>
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div style={{ padding: '1.75rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <span style={{ fontSize: '0.8rem', color: '#7A5AF8', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                      {project.subtitle}
-                    </span>
+                  {/* Highlighted Status Pill */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      backgroundColor: isClient ? 'rgba(16, 185, 129, 0.9)' : 'rgba(5, 11, 32, 0.85)',
+                      backdropFilter: 'blur(8px)',
+                      border: isClient ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid rgba(89, 56, 232, 0.4)',
+                      color: '#FFFFFF',
+                      padding: '4px 12px',
+                      borderRadius: '8px',
+                      fontSize: '0.74rem',
+                      fontWeight: 800,
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      boxShadow: isClient ? '0 4px 15px rgba(16, 185, 129, 0.4)' : 'none'
+                    }}
+                  >
+                    {isClient && (
+                      <span
+                        style={{
+                          width: '6px',
+                          height: '6px',
+                          borderRadius: '50%',
+                          backgroundColor: '#FFFFFF',
+                          boxShadow: '0 0 6px #FFFFFF'
+                        }}
+                      />
+                    )}
+                    <span>{project.badge}</span>
                   </div>
 
-                  <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.65rem' }}>
-                    {project.title}
-                  </h3>
+                  {/* Live Web Indicator for Client Project */}
+                  {isClient && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '12px',
+                        right: '12px',
+                        backgroundColor: 'rgba(5, 11, 32, 0.85)',
+                        backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(89, 56, 232, 0.4)',
+                        color: '#B8A5FF',
+                        padding: '4px 10px',
+                        borderRadius: '8px',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px'
+                      }}
+                    >
+                      <Globe size={13} color="#10B981" />
+                      <span>Live on Vercel</span>
+                    </div>
+                  )}
 
-                  <p style={{ fontSize: '0.92rem', color: '#94A3B8', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                    {project.summary}
-                  </p>
+                  {/* Quick View Button Overlay */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '12px',
+                      right: '12px',
+                      backgroundColor: 'rgba(89, 56, 232, 0.9)',
+                      color: '#FFFFFF',
+                      padding: '6px 14px',
+                      borderRadius: '20px',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)'
+                    }}
+                  >
+                    <Eye size={14} />
+                    <span>Inspect Project</span>
+                  </div>
+                </div>
 
-                  {/* Feature Tags */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
-                    {project.tags.map((tag, i) => (
+                {/* Card Body */}
+                <div style={{ padding: '1.75rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                       <span
-                        key={i}
                         style={{
-                          fontSize: '0.74rem',
-                          backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                          color: '#CBD5E1',
-                          padding: '3px 9px',
-                          borderRadius: '6px',
-                          border: '1px solid rgba(255, 255, 255, 0.08)'
+                          fontSize: '0.8rem',
+                          color: isClient ? '#34D399' : '#7A5AF8',
+                          fontWeight: 700,
+                          letterSpacing: '0.04em',
+                          textTransform: 'uppercase'
                         }}
                       >
-                        {tag}
+                        {project.subtitle}
                       </span>
-                    ))}
+                    </div>
+
+                    <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.65rem' }}>
+                      {project.title}
+                    </h3>
+
+                    <p style={{ fontSize: '0.92rem', color: '#CBD5E1', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                      {project.summary}
+                    </p>
+
+                    {/* Feature Tags */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          style={{
+                            fontSize: '0.74rem',
+                            backgroundColor: isClient && i === 0 ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255, 255, 255, 0.06)',
+                            color: isClient && i === 0 ? '#34D399' : '#CBD5E1',
+                            padding: '3px 9px',
+                            borderRadius: '6px',
+                            border: isClient && i === 0 ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid rgba(255, 255, 255, 0.08)',
+                            fontWeight: isClient && i === 0 ? 700 : 500
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action Strip */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                    {isClient ? (
+                      /* Highlighted Visit Live Website Link */
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          flex: 1,
+                          padding: '0.75rem 1.25rem',
+                          borderRadius: '12px',
+                          backgroundColor: '#5938E8',
+                          color: '#FFFFFF',
+                          fontSize: '0.88rem',
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          boxShadow: '0 4px 18px rgba(89, 56, 232, 0.45)',
+                          transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#4827D1';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = '#5938E8';
+                          e.currentTarget.style.transform = 'translateY(0)';
+                        }}
+                      >
+                        <span>Visit Live Website</span>
+                        <ExternalLink size={16} />
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        style={{
+                          flex: 1,
+                          padding: '0.7rem 1rem',
+                          borderRadius: '12px',
+                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
+                          color: '#FFFFFF',
+                          fontSize: '0.86rem',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          transition: 'background 0.2s'
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.16)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)')}
+                      >
+                        <Eye size={16} />
+                        <span>View Mockup</span>
+                      </button>
+                    )}
+
+                    <a
+                      href={`https://wa.me/916303248510?text=${encodeURIComponent(project.whatsappMsg)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        padding: '0.7rem 1.1rem',
+                        borderRadius: '12px',
+                        backgroundColor: isClient ? 'rgba(255, 255, 255, 0.08)' : '#5938E8',
+                        border: isClient ? '1px solid rgba(255, 255, 255, 0.15)' : 'none',
+                        color: '#FFFFFF',
+                        fontSize: '0.86rem',
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        transition: 'background 0.2s'
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = isClient ? 'rgba(255, 255, 255, 0.16)' : '#4827D1')}
+                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = isClient ? 'rgba(255, 255, 255, 0.08)' : '#5938E8')}
+                    >
+                      <span>{isClient ? 'Inquire' : 'Request Similar'}</span>
+                      <ArrowUpRight size={16} />
+                    </a>
                   </div>
                 </div>
-
-                {/* Action Strip */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    style={{
-                      flex: 1,
-                      padding: '0.7rem 1rem',
-                      borderRadius: '12px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
-                      color: '#FFFFFF',
-                      fontSize: '0.86rem',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      transition: 'background 0.2s'
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.16)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)')}
-                  >
-                    <Eye size={16} />
-                    <span>View Mockup</span>
-                  </button>
-
-                  <a
-                    href={`https://wa.me/916303248510?text=${encodeURIComponent(project.whatsappMsg)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      padding: '0.7rem 1.1rem',
-                      borderRadius: '12px',
-                      backgroundColor: '#5938E8',
-                      color: '#FFFFFF',
-                      fontSize: '0.86rem',
-                      fontWeight: 600,
-                      textDecoration: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      transition: 'background 0.2s'
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#4827D1')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#5938E8')}
-                  >
-                    <span>Request Similar</span>
-                    <ArrowUpRight size={16} />
-                  </a>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -419,8 +540,16 @@ export default function OurWork() {
               }}
             >
               <div>
-                <span style={{ fontSize: '0.78rem', color: '#7A5AF8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Demonstration Project by BOB DIGITAL
+                <span
+                  style={{
+                    fontSize: '0.78rem',
+                    color: selectedProject.isClientProject ? '#34D399' : '#7A5AF8',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}
+                >
+                  {selectedProject.isClientProject ? '★ First Client Project by BOB DIGITAL' : 'Demonstration Project by BOB DIGITAL'}
                 </span>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginTop: '2px', color: '#FFFFFF' }}>
                   {selectedProject.title}
@@ -450,14 +579,15 @@ export default function OurWork() {
 
             {/* Modal Body */}
             <div style={{ padding: '2rem' }}>
-              {/* Full Mockup Preview */}
+              {/* Image Preview */}
               <div
                 style={{
                   borderRadius: '16px',
                   overflow: 'hidden',
                   border: '1px solid rgba(255, 255, 255, 0.15)',
                   marginBottom: '2rem',
-                  boxShadow: '0 15px 35px rgba(0,0,0,0.5)'
+                  boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
+                  position: 'relative'
                 }}
               >
                 <img
@@ -465,13 +595,37 @@ export default function OurWork() {
                   alt={selectedProject.title}
                   style={{ width: '100%', display: 'block', height: 'auto' }}
                 />
+
+                {selectedProject.isClientProject && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '16px',
+                      left: '16px',
+                      backgroundColor: 'rgba(5, 11, 32, 0.85)',
+                      backdropFilter: 'blur(10px)',
+                      padding: '8px 16px',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(16, 185, 129, 0.4)',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: '#E2E8F0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px'
+                    }}
+                  >
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981', boxShadow: '0 0 8px #10B981' }} />
+                    <span>Live client production deployment</span>
+                  </div>
+                )}
               </div>
 
               {/* Project Details */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.75rem', color: '#CBD5E1' }}>
-                    Concept & Strategy
+                    Project Overview
                   </h4>
                   <p style={{ fontSize: '0.94rem', color: '#94A3B8', lineHeight: 1.65 }}>
                     {selectedProject.summary}
@@ -480,12 +634,12 @@ export default function OurWork() {
 
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.75rem', color: '#CBD5E1' }}>
-                    Architecture Highlights
+                    Key Deliverables & Architecture
                   </h4>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     {selectedProject.features.map((feat, i) => (
                       <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.9rem', color: '#E2E8F0' }}>
-                        <CheckCircle size={16} color="#7A5AF8" style={{ marginTop: '2px', flexShrink: 0 }} />
+                        <CheckCircle size={16} color={selectedProject.isClientProject ? '#10B981' : '#7A5AF8'} style={{ marginTop: '2px', flexShrink: 0 }} />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -509,23 +663,48 @@ export default function OurWork() {
               >
                 <div>
                   <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF' }}>
-                    Need a website built with this level of quality?
+                    {selectedProject.isClientProject
+                      ? 'Experience the full live website directly on Vercel'
+                      : 'Need a website built with this level of quality?'}
                   </div>
                   <div style={{ fontSize: '0.8rem', color: '#94A3B8' }}>
-                    Direct WhatsApp quote with Sardar Balwinder Singh (Founder & Developer).
+                    {selectedProject.isClientProject
+                      ? 'Designed and built by BOB Digital for the Together We Rise Network.'
+                      : 'Direct WhatsApp quote with Sardar Balwinder Singh (Founder & Developer).'}
                   </div>
                 </div>
 
-                <a
-                  href={`https://wa.me/916303248510?text=${encodeURIComponent(selectedProject.whatsappMsg)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ padding: '0.75rem 1.75rem', fontSize: '0.9rem' }}
-                >
-                  <span>Chat on WhatsApp</span>
-                  <ArrowUpRight size={16} />
-                </a>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  {selectedProject.isClientProject && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                      style={{ padding: '0.75rem 1.5rem', fontSize: '0.9rem', backgroundColor: '#10B981', borderColor: 'rgba(255,255,255,0.2)' }}
+                    >
+                      <span>Visit Live Website</span>
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+
+                  <a
+                    href={`https://wa.me/916303248510?text=${encodeURIComponent(selectedProject.whatsappMsg)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary"
+                    style={{
+                      padding: '0.75rem 1.5rem',
+                      fontSize: '0.9rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      color: '#FFFFFF',
+                      borderColor: 'rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    <span>Inquire on WhatsApp</span>
+                    <ArrowUpRight size={16} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
