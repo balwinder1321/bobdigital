@@ -98,7 +98,7 @@ export default function Hero() {
               }}
             />
             <span style={{ fontSize: '0.84rem', fontWeight: 600, color: '#D4C9FF', letterSpacing: '0.02em' }}>
-              Hyderabad Web Development Studio • Accepting New Projects
+              Hyderabad & Karimnagar Web Studio • Accepting New Projects
             </span>
           </div>
 
@@ -132,12 +132,12 @@ export default function Hero() {
               fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
               lineHeight: 1.65,
               color: '#94A3B8',
-              maxWidth: '680px',
+              maxWidth: '720px',
               margin: '0 auto 2.5rem',
               fontWeight: 400
             }}
           >
-            We create high-quality, modern websites that help businesses build credibility, attract customers and grow online.
+            We create high-performance websites, bespoke web design, and conversion-focused e-commerce platforms engineered to help businesses in Hyderabad, Karimnagar, and across Telangana build credibility and scale online.
           </p>
 
           {/* Action Buttons */}
@@ -246,7 +246,10 @@ export default function Hero() {
             <div style={{ position: 'relative', borderRadius: '8px 8px 0 0', overflow: 'hidden' }}>
               <img
                 src="/assets/hero-dashboard.jpg"
-                alt="BOB DIGITAL High Performance Web Platform"
+                alt="BOB Digital Web Development, Web Design and E-Commerce Platform Showcase for Hyderabad and Karimnagar Businesses"
+                width="1060"
+                height="520"
+                loading="eager"
                 style={{
                   width: '100%',
                   height: 'auto',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle, Clock, CheckCircle2, Sparkles } from 'lucide-react';
+import { Mail, MapPin, Send, MessageCircle, Clock, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function Contact() {
@@ -16,11 +16,11 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const servicesList = [
-    'Website Development',
-    'E-Commerce Platform',
-    'Custom Website Development',
+    'Website Development & Web Design',
+    'E-Commerce Platform & Online Store',
+    'Custom Web Development',
     'Website Management & Maintenance',
-    'Other / Consultation'
+    'Other / Local Consultation'
   ];
 
   const plansList = [
@@ -104,7 +104,7 @@ _Sent via BOB DIGITAL Website Enquiry Form_`;
             <span style={{ color: '#5938E8' }}>Exceptional Together.</span>
           </h2>
           <p className="section-subtitle">
-            Tell us about your brand vision, requirements, or desired timeline. We will review your goals and provide a direct roadmap and quote.
+            Tell us about your brand vision, requirements, or desired timeline. Providing web development, web design, and e-commerce services across Hyderabad, Karimnagar, and throughout Telangana.
           </p>
         </div>
 
@@ -278,10 +278,10 @@ _Sent via BOB DIGITAL Website Enquiry Form_`;
               </div>
               <div>
                 <div style={{ fontSize: '0.78rem', color: '#718096', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Studio Headquarters
+                  Service Areas
                 </div>
                 <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#050B20' }}>
-                  Hyderabad, Telangana, India
+                  Hyderabad & Karimnagar, Telangana, India
                 </div>
               </div>
             </div>

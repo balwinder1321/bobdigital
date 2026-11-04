@@ -1,0 +1,7 @@
+# robots.txt for BOB Digital (https://bobdigital.vercel.app/)
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bobdigital.vercel.app/sitemap.xml
+

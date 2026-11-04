@@ -5,38 +5,38 @@ export default function Services() {
   const services = [
     {
       id: 'website-development',
-      title: 'Website Development',
+      title: 'Website Development & Web Design',
       badge: 'Core Solution',
       icon: Layout,
-      description: 'High-performance, beautifully branded websites engineered for speed, authority, and seamless user experience across every device.',
+      description: 'High-performance, beautifully branded websites and bespoke web designs engineered for speed, authority, and seamless user experience across Hyderabad, Karimnagar, and beyond.',
       deliverables: [
         'Mobile-first responsive architecture',
-        'Conversion-optimised layout & UX',
+        'Conversion-focused UI/UX web design',
         'Fast loading speeds under 1.5s',
-        'On-page technical SEO setup'
+        'Local SEO & on-page technical setup'
       ],
-      whatsappMsg: 'Hello BOB DIGITAL, I would like to enquire about your Website Development services.'
+      whatsappMsg: 'Hello BOB DIGITAL, I would like to enquire about your Website Development and Web Design services in Hyderabad / Karimnagar.'
     },
     {
       id: 'ecommerce-platforms',
-      title: 'E-Commerce Platforms',
+      title: 'E-Commerce Services & Stores',
       badge: 'Revenue Focused',
       icon: ShoppingCart,
-      description: 'Conversion-optimized digital storefronts designed to showcase products elegantly, manage inventory, and securely process payments.',
+      description: 'Conversion-optimized e-commerce services and digital storefronts designed to showcase products elegantly, manage inventory, and securely process payments.',
       deliverables: [
         'Razorpay, UPI, & Stripe integrations',
-        'Intuitive product catalog & cart',
-        'Mobile checkout optimisation',
-        'Automated order email alerts'
+        'Intuitive product catalog & cart UX',
+        'Mobile checkout speed optimisation',
+        'Automated order alerts & inventory sync'
       ],
-      whatsappMsg: 'Hello BOB DIGITAL, I would like to enquire about building an E-Commerce Platform.'
+      whatsappMsg: 'Hello BOB DIGITAL, I would like to enquire about building an E-Commerce Store for my business.'
     },
     {
       id: 'custom-web-dev',
       title: 'Custom Website Development',
       badge: 'Bespoke Engineering',
       icon: Cpu,
-      description: 'Tailor-made web applications, custom workflows, interactive portals, and bespoke UI/UX designs built to your exact specifications.',
+      description: 'Tailor-made web applications, custom workflows, interactive portals, and bespoke UI/UX designs built to your exact business specifications in Telangana.',
       deliverables: [
         'Modern React & component design',
         'Third-party API & CRM integrations',
@@ -75,7 +75,7 @@ export default function Services() {
         {/* Section Header */}
         <div className="section-header">
           <div className="badge-pill" style={{ marginBottom: '1rem' }}>
-            What We Do
+            What We Do • Hyderabad & Karimnagar
           </div>
           <h2
             style={{
@@ -88,7 +88,7 @@ export default function Services() {
             <span style={{ color: '#5938E8' }}>Built to Grow.</span>
           </h2>
           <p className="section-subtitle">
-            We don't build generic templates. Every website is engineered from scratch to reflect your brand's unique prestige and convert traffic into actual revenue.
+            From custom website development and modern web design to revenue-focused e-commerce platforms, we engineer high-converting digital solutions for businesses across Hyderabad, Karimnagar, and throughout Telangana.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export default function Services() {
             gap: '2rem'
           }}
         >
-          {services.map((service, index) => {
+          {services.map((service) => {
             const Icon = service.icon;
             return (
               <div

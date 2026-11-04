@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Eye, ArrowUpRight, CheckCircle, X, Sparkles, Globe } from 'lucide-react';
+import { ExternalLink, Eye, ArrowUpRight, CheckCircle, X, Globe } from 'lucide-react';
 
 export default function OurWork() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -174,7 +174,7 @@ export default function OurWork() {
             </span>
           </h2>
           <p className="section-subtitle">
-            Explore our completed client solutions and curated demonstration projects. Every build is engineered with uncompromising quality, aesthetic restraint, and business focus.
+            Explore our completed client solutions and curated demonstration projects. High-impact web development, modern web design, and e-commerce solutions crafted for businesses in Hyderabad, Karimnagar, and beyond.
           </p>
         </div>
 
@@ -256,7 +256,10 @@ export default function OurWork() {
                 >
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - ${project.subtitle} by BOB Digital`}
+                    loading="lazy"
+                    width="600"
+                    height="338"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -592,7 +595,9 @@ export default function OurWork() {
               >
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  alt={`${selectedProject.title} showcase - Web Development by BOB Digital`}
+                  width="1000"
+                  height="560"
                   style={{ width: '100%', display: 'block', height: 'auto' }}
                 />
 

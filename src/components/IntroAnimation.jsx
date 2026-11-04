@@ -125,7 +125,9 @@ export default function IntroAnimation({ onExit, onComplete }) {
         <div style={{ position: 'relative', marginBottom: '1.25rem' }}>
           <img
             src="/assets/bob-logo.png"
-            alt="BOB DIGITAL"
+            alt="BOB Digital - Web Development & Web Design Studio Hyderabad and Karimnagar"
+            width="380"
+            height="140"
             style={{
               maxHeight: '140px',
               maxWidth: '380px',

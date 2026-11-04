@@ -80,6 +80,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#home"
+          aria-label="BOB Digital - Web Development & Web Design Studio"
           onClick={(e) => handleScrollTo(e, '#home')}
           style={{
             display: 'flex',

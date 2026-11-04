@@ -39,7 +39,7 @@ export default function FloatingWhatsApp() {
 
       {/* Floating Button */}
       <a
-        href="https://wa.me/916303248510?text=Hi%20BOB%20DIGITAL,%20I%20have%20a%20question%20about%20your%20website%20services."
+        href="https://wa.me/916303248510?text=Hi%20BOB%20DIGITAL,%20I%20have%20an%20enquiry%20regarding%20website%20services%20in%20Hyderabad%20/%20Karimnagar."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with BOB DIGITAL on WhatsApp"

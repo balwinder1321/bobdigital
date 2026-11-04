@@ -11,16 +11,20 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
-const checkSessionIntroSeen = () => {
+const checkShouldSkipIntro = () => {
   try {
-    return sessionStorage.getItem('bob_digital_intro_seen') === 'true';
+    if (typeof window === 'undefined') return true;
+    if (sessionStorage.getItem('bob_digital_intro_seen') === 'true') return true;
+    const isBot = /bot|googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebot|facebookexternalhit|ia_archiver/i.test(navigator.userAgent || '');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return Boolean(isBot || prefersReducedMotion);
   } catch {
     return false;
   }
 };
 
 export default function App() {
-  const [alreadySeen] = useState(() => checkSessionIntroSeen());
+  const [alreadySeen] = useState(() => checkShouldSkipIntro());
   const [showIntro, setShowIntro] = useState(() => !alreadySeen);
   const [introExiting, setIntroExiting] = useState(false);
   const [introFinished, setIntroFinished] = useState(() => alreadySeen);
@@ -57,14 +61,12 @@ export default function App() {
 
       {/* 
         Entire Homepage Wrapper:
-        Completely hidden until the intro begins its smooth exit transition.
-        Never flashes before or during the animation.
+        Kept accessible and crawlable in the DOM while the fixed intro overlay smoothly completes.
       */}
       <div
         id="homepage-wrapper"
         style={{
-          opacity: introFinished ? 1 : introExiting ? 1 : 0,
-          visibility: introFinished || introExiting ? 'visible' : 'hidden',
+          opacity: introFinished ? 1 : introExiting ? 1 : 0.99,
           pointerEvents: introFinished || introExiting ? 'auto' : 'none',
           transition: introExiting
             ? 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1)'

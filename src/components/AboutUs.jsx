@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Smartphone, HeartHandshake, TrendingUp, MessageCircle, MapPin, Award, Code2, ShieldCheck, CheckCircle2, UserCheck } from 'lucide-react';
+import { Target, Smartphone, HeartHandshake, TrendingUp, MessageCircle, MapPin, Award, Code2, ShieldCheck, UserCheck } from 'lucide-react';
 
 export default function AboutUs() {
   const highlights = [
@@ -185,7 +185,7 @@ export default function AboutUs() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#CBD5E1' }}>
                   <MapPin size={16} color="#7A5AF8" />
-                  <span>Hyderabad, Telangana, India</span>
+                  <span>Serving Hyderabad & Karimnagar, Telangana, India</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#CBD5E1' }}>
                   <ShieldCheck size={16} color="#7A5AF8" />
@@ -198,7 +198,7 @@ export default function AboutUs() {
               </div>
 
               <p style={{ fontSize: '0.94rem', color: '#94A3B8', lineHeight: 1.6, marginBottom: '2rem' }}>
-                Dedicated to helping businesses scale with cutting-edge web architecture, clean engineering, and modern visual design.
+                Dedicated to helping businesses across Telangana scale with cutting-edge web architecture, clean engineering, and modern visual design.
               </p>
             </div>
 
@@ -262,11 +262,11 @@ export default function AboutUs() {
             </h3>
 
             <p style={{ fontSize: '1.02rem', lineHeight: 1.7, color: '#4A5568', marginBottom: '1.25rem' }}>
-              <strong>BOB Digital</strong> was established to help businesses build a strong digital presence through quality website development, modern design and reliable technical solutions.
+              <strong>BOB Digital</strong> was established to help businesses build a strong digital presence through quality website development, modern web design, and reliable technical solutions.
             </p>
 
             <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: '#5A657D', marginBottom: '1.75rem' }}>
-              Based in the tech capital of Hyderabad, we believe that an exceptional website does not just look impressive—it commands trust, communicates value clearly, and reliably converts visitors into customers. By pairing world-class modern UI aesthetics with resilient, clean code, we ensure your business stays ahead of the competition.
+              Serving businesses across Hyderabad, Karimnagar, and throughout Telangana, we believe that an exceptional website does not just look impressive—it commands trust, communicates value clearly, and reliably converts visitors into customers. Whether you need custom web development, mobile-first web design, or a full e-commerce store, we deliver engineered solutions that help local brands succeed.
             </p>
 
             {/* Quote Block */}
@@ -334,6 +334,124 @@ export default function AboutUs() {
               </div>
             );
           })}
+        </div>
+
+        {/* Local Service Hubs: Hyderabad & Karimnagar */}
+        <div
+          style={{
+            marginTop: '3.5rem',
+            backgroundColor: '#F7F7FA',
+            borderRadius: '24px',
+            padding: '2.5rem 2rem',
+            border: '1px solid rgba(89, 56, 232, 0.15)'
+          }}
+        >
+          <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2rem' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: '#5938E8',
+                marginBottom: '0.5rem'
+              }}
+            >
+              <MapPin size={16} />
+              <span>Local Service Coverage in Telangana</span>
+            </div>
+            <h3 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.95rem)', fontWeight: 800, color: '#050B20', marginBottom: '0.5rem' }}>
+              Web Development, Web Design & E-Commerce in Hyderabad & Karimnagar
+            </h3>
+            <p style={{ fontSize: '0.94rem', color: '#5A657D', lineHeight: 1.6 }}>
+              We partner with local entrepreneurs, retail businesses, and growing enterprises to build fast, modern, and search-optimised websites tailored to the Telangana market.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '1.75rem'
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: '18px',
+                padding: '1.75rem',
+                border: '1px solid rgba(5, 11, 32, 0.08)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                <div
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '10px',
+                    backgroundColor: 'rgba(89, 56, 232, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#5938E8'
+                  }}
+                >
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#050B20', margin: 0 }}>
+                    Hyderabad Region
+                  </h4>
+                  <span style={{ fontSize: '0.8rem', color: '#5938E8', fontWeight: 600 }}>
+                    Tech Hub & Enterprise Websites
+                  </span>
+                </div>
+              </div>
+              <p style={{ fontSize: '0.88rem', color: '#5A657D', lineHeight: 1.6, margin: 0 }}>
+                Full-stack website development, custom React platforms, and corporate web design for businesses across Hitec City, Madhapur, Gachibowli, Banjara Hills, Jubilee Hills, Secunderabad, and greater Hyderabad.
+              </p>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: '18px',
+                padding: '1.75rem',
+                border: '1px solid rgba(5, 11, 32, 0.08)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                <div
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '10px',
+                    backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#10B981'
+                  }}
+                >
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#050B20', margin: 0 }}>
+                    Karimnagar Region
+                  </h4>
+                  <span style={{ fontSize: '0.8rem', color: '#10B981', fontWeight: 600 }}>
+                    Commercial & Local Business Growth
+                  </span>
+                </div>
+              </div>
+              <p style={{ fontSize: '0.88rem', color: '#5A657D', lineHeight: 1.6, margin: 0 }}>
+                High-converting local business websites, modern web design, and e-commerce stores with UPI integration for merchants, schools, clinics, and brands in Karimnagar and surrounding districts.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

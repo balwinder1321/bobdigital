@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, RefreshCw, HardDrive, Zap, Clock, MessageCircle, ArrowRight, Activity, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, RefreshCw, HardDrive, Zap, Clock, MessageCircle, Activity } from 'lucide-react';
 
 export default function WebsiteManagement() {
   const managementFeatures = [
@@ -83,7 +83,7 @@ export default function WebsiteManagement() {
             </span>
           </h2>
           <p className="section-subtitle">
-            A website is never just 'done'. We protect your investment with continuous technical supervision, automated backups, speed audits, and instant support.
+            A website is never just 'done'. We protect your investment with continuous technical supervision, automated backups, speed audits, and instant support for businesses across Hyderabad, Karimnagar, and Telangana.
           </p>
         </div>
 

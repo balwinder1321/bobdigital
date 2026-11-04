@@ -1,5 +1,7 @@
 import React from 'react';
-import { Mail, Phone, MapPin, ArrowUp, MessageCircle, Heart } from 'lucide-react';
+import { Mail, MapPin, ArrowUp, MessageCircle } from 'lucide-react';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -103,7 +105,7 @@ export default function Footer() {
             </p>
 
             <p style={{ fontSize: '0.9rem', color: '#94A3B8', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              Hyderabad's dedicated modern web development studio crafting conversion-focused websites, e-commerce stores, and digital architecture.
+              Hyderabad & Karimnagar's dedicated web development studio crafting high-converting websites, modern web design, and scalable e-commerce solutions across Telangana.
             </p>
 
             <div
@@ -120,7 +122,7 @@ export default function Footer() {
               }}
             >
               <MapPin size={14} color="#7A5AF8" />
-              <span>Hyderabad, Telangana, India</span>
+              <span>Serving Hyderabad & Karimnagar, Telangana</span>
             </div>
           </div>
 
@@ -184,11 +186,11 @@ export default function Footer() {
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                'Business Website Development',
-                'E-Commerce & Online Stores',
-                'Custom React & Next.js Apps',
-                'Website Redesign & Upgrades',
-                'Speed & Technical SEO Audits',
+                'Website Development in Hyderabad',
+                'Web Design in Karimnagar',
+                'E-Commerce Platforms & Stores',
+                'Custom React Web Applications',
+                'Technical Local SEO & Speed Tuning',
                 'Ongoing Website Maintenance'
               ].map((srv, idx) => (
                 <li key={idx} style={{ fontSize: '0.92rem', color: '#94A3B8' }}>
@@ -273,7 +275,7 @@ export default function Footer() {
           }}
         >
           <div style={{ fontSize: '0.86rem', color: '#94A3B8' }}>
-            © {new Date().getFullYear()} BOB DIGITAL. All rights reserved. Crafted with precision in Hyderabad, India.
+            © {CURRENT_YEAR} BOB DIGITAL. All rights reserved. Professional Web Development, Web Design & E-Commerce Studio in Hyderabad & Karimnagar, Telangana.
           </div>
 
           <button

@@ -89,7 +89,7 @@ export default function Pricing() {
             Pricing <span style={{ color: '#5938E8' }}>Plans</span>
           </h2>
           <p className="section-subtitle" style={{ fontSize: '1.15rem' }}>
-            Professional websites for every stage of your business.
+            Transparent pricing for website development, web design, and e-commerce services in Hyderabad and Karimnagar.
           </p>
         </div>
 
