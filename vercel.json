@@ -28,11 +28,24 @@
           "value": "public, max-age=86400, stale-while-revalidate=43200"
         }
       ]
+    },
+    {
+      "source": "/googlec2b9d34ec27263ac.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|favicon|robots\\.txt|sitemap\\.xml).*)",
+      "source": "/((?!assets|favicon|robots\\.txt|sitemap\\.xml|google[a-zA-Z0-9]+\\.html).*)",
       "destination": "/index.html"
     }
   ]
