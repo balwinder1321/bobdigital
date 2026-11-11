@@ -148,6 +148,7 @@ export default function Footer() {
                 { label: 'Pricing Plans', href: '#pricing' },
                 { label: 'Website Management', href: '#management' },
                 { label: 'About Us', href: '#about' },
+                { label: 'FAQ', href: '#faq' },
                 { label: 'Contact', href: '#contact' },
               ].map((item, i) => (
                 <li key={i}>

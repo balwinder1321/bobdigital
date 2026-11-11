@@ -15,7 +15,7 @@ export default function Navbar() {
       }
 
       // Check current section
-      const sections = ['home', 'services', 'work', 'pricing', 'management', 'about', 'contact'];
+      const sections = ['home', 'services', 'work', 'pricing', 'management', 'about', 'faq', 'contact'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -39,6 +39,7 @@ export default function Navbar() {
     { name: 'Pricing', href: '#pricing', id: 'pricing' },
     { name: 'Management', href: '#management', id: 'management' },
     { name: 'About Us', href: '#about', id: 'about' },
+    { name: 'FAQ', href: '#faq', id: 'faq' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 

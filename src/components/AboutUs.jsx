@@ -411,7 +411,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <p style={{ fontSize: '0.88rem', color: '#5A657D', lineHeight: 1.6, margin: 0 }}>
-                Full-stack website development, custom React platforms, and corporate web design for businesses across Hitec City, Madhapur, Gachibowli, Banjara Hills, Jubilee Hills, Secunderabad, and greater Hyderabad.
+                Full-stack website development, custom React platforms, and corporate web design for businesses looking to build a high-performance website across Hitec City, Madhapur, Gachibowli, Banjara Hills, Jubilee Hills, Secunderabad, and greater Hyderabad.
               </p>
             </div>
 
@@ -448,7 +448,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <p style={{ fontSize: '0.88rem', color: '#5A657D', lineHeight: 1.6, margin: 0 }}>
-                High-converting local business websites, modern web design, and e-commerce stores with UPI integration for merchants, schools, clinics, and brands in Karimnagar and surrounding districts.
+                High-converting local business websites, modern web design, and online stores with UPI integration for merchants, clinics, and entrepreneurs looking to build a website in Karimnagar and northern Telangana.
               </p>
             </div>
           </div>

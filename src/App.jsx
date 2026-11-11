@@ -7,6 +7,7 @@ import OurWork from './components/OurWork';
 import Pricing from './components/Pricing';
 import WebsiteManagement from './components/WebsiteManagement';
 import AboutUs from './components/AboutUs';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -88,6 +89,7 @@ export default function App() {
           <Pricing />
           <WebsiteManagement />
           <AboutUs />
+          <FAQ />
           <Contact />
         </main>
 

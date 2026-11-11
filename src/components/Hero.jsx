@@ -132,12 +132,12 @@ export default function Hero() {
               fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
               lineHeight: 1.65,
               color: '#94A3B8',
-              maxWidth: '720px',
+              maxWidth: '740px',
               margin: '0 auto 2.5rem',
               fontWeight: 400
             }}
           >
-            We create high-performance websites, bespoke web design, and conversion-focused e-commerce platforms engineered to help businesses in Hyderabad, Karimnagar, and across Telangana build credibility and scale online.
+            Looking to build a website in Hyderabad or Karimnagar? BOB Digital creates high-performance business websites, bespoke web design, and conversion-focused e-commerce platforms engineered to help local businesses scale online.
           </p>
 
           {/* Action Buttons */}
